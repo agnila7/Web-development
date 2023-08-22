@@ -1,0 +1,46 @@
+/* * is the global variable, any property inside that curly brace  will be developed in the whole webpage*/
+body {
+  background-color: #94a3b8;
+  color: #1a2e05;
+  /* instead of global variable , we use inheritance, in the specific parent element (body) we put our property like (text-transformation, color(most of them)), all the child elements (form, span, paragraph) will have also that property*/
+
+  /* not all property has the inheitance  nature. for example background color*/
+}
+img {
+  margin: auto;
+  display: block;
+}
+
+.skill-builder {
+  background-color: #64748b;
+}
+
+h1 {
+  font-size: 42px;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Coiny", Arial, sans-serif;
+  color: #820829;
+  /* there are by default color. we dont use them. we use RGB model color (Red, green , blue). they are hexadecimel number. each two digit / char define how much red, green and blue is in that color. we usually use  tailwind.css customizing colors for selecting the pallette */
+}
+
+.information {
+  font-size: 20px;
+  line-height: 1.4;
+  font-family: "Josefin Sans", sans-serif;
+  /* we usually download the font from google. the site is called googlefonts */
+
+  background-color: #64748b;
+}
+
+.tag {
+  text-transform: uppercase;
+  font-size: 15px;
+  font-family: "Coiny", sans-serif;
+
+  background-color: #64748b;
+}
+
+ul {
+  list-style: none;
+}
