@@ -1,98 +1,213 @@
 <!DOCTYPE html>
-<html lang="en"> <!main two child element of html: header and body>
-  <head>
-    <meta charset="UTF-8" />
+<!-- saved from url=(0066)https://s3.ca-central-1.amazonaws.com/agnilabarua.click/index.html -->
+<html lang="en">
+  <!--main two child element of html: header and body--><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Josefin+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-    <link href="style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link href="./Agnila Barua_files/css2" rel="stylesheet" />
+    <!-- upper link Josefin has font weight, so instead of using bold or strong, we can maupulate the font weight -->
+    <link href="./Agnila Barua_files/style.css" rel="stylesheet" />
+    <!-- linked tour css file through this link -->
     <title>Agnila Barua</title>
   </head>
 
-  <body> <! header and main section has been introduced for stlying purposes and for accessible reading>
-    <!header, form, main, aside, sectio are all box with special meaning, div is generic box>
-    <header>
-        <img src="agnila.jpg" height="220" width="170" alt="Image of Agnila"/> <! self closing tag>
-        <h1>Agnila Barua</h1> <!heading>
-        <button> Share New Skills</button>
-    </header>
+  <body data-new-gr-c-s-check-loaded="14.1136.0" data-gr-ext-installed="">
+    <div class="container">
+      <!-- header and main section has been introduced for stlying purposes and for accessible reading-->
+      <!--header, form, main, aside, sectio are all box with special meaning, div is generic box-->
+      <header class="header">
+        <div class="logo">
+          <img
+            src="./Agnila Barua_files/agnila1.png"
+            height="200"
+            width="200"
+            alt="Image of Agnila"
+          />
+          <!-- self closing tag-->
+          <h1>Agnila Barua</h1>
+          <!--heading-->
+        </div>
 
-    <form class="skill-builder"> <!it is introduced for js purpose of making a form to share my Skill using UI>
-        <input type="text" placeholder="Share your accumulated skills"/> <!placeholder attributer is the text that shows up before you type in the forms list>
-        <span class="dropdown"> 200 </span> <!we use span instead of p so that it creates new line onside of that paragraph. instead of creating a new paragraph>
-        <input type="text"placeholder="Add your github repository"/>
-        <select> <!dropdown menu>
-            <option value=""> Choose category:</option> <!So that they can choose from the category. this one is different from other>
-            <option value="Introduction"> Introduction</option> <! option always neds the value attribute to submit>
-            <option value="About"> About</option>
+        <button class="btn btn-large btn-open">
+          Recommendation &amp; Endorsement
+        </button>
+      </header>
+
+      <!-- used for grid example
+    -- <div class="test">
+        <p class="child">1</p>
+        <p class="child">2</p>
+        <p class="child">3</p>
+        <p class="child">4</p>
+        <p class="child">5</p>
+    </div> -->
+
+      <form class="recommendation hidden">
+        <!--it is introduced for js purpose of making a form to share my Skill using UI-->
+        <input type="text" placeholder="Share your thoughts..." />
+        <!--placeholder attributer is the text that shows up before you type in the forms list-->
+        <span class="dropdown"> 200 </span>
+        <!--we use span instead of p so that it creates new line onside of that paragraph. instead of creating a new paragraph-->
+        <input type="text" placeholder="Add your LinkedIn Profile" />
+        <select>
+          <!--dropdown menu-->
+          <option value="">Choose category:</option>
+          <!--So that they can choose from the category. this one is different from other-->
+          <option value="Introduction">Introduction</option>
+          <!-- option always neds the value attribute to submit-->
+          <option value="About">About</option>
         </select>
-        <button>Post</button>
-    </form>
+        <button class="btn btn-large">Post</button>
+        <!-- can have multiple classes -->
+      </form>
 
-
-<main>
-    <aside> <!aside is here as  all the buttons will be in sidebar>
-        <ul>
-            <li>
-                <button>All</button> 
+      <main class="main">
+        <aside>
+          <!--aside is here as  all the buttons will be in sidebar-->
+          <ul>
+            <li class="category">
+              <button class="btn btn-all-categories">All</button>
             </li>
-            <li>
-                <button>Introduction</button>
+            <li class="category">
+              <button
+                class="btn btn-categories"
+                style="background-color: #3b82f6"
+              >
+                Introduction
+              </button>
             </li>
-            <li>
-                <button>About</button>
+            <li class="category">
+              <button
+                class="btn btn-categories"
+                style="background-color: #be123c"
+              >
+                About
+              </button>
             </li>
-        </ul>
-    </aside>
+          </ul>
+        </aside>
 
-<section>
-    <ul>
-        <li>
-          <p class="information">
-              A Cloud Digital Transformation Specialist, M.Sc.
-              Graduate from Electrical & Computer Engineering Department of the University of Windsor.
-              <a href="https://www.linkedin.com/in/agnila-barua/" target="_blank"> (LinkedIn)</a>
-              <span class="tag">#Introduction#</span>
-            </p>
-            <div>
-            <button>👍 <strong>5</strong></button> <!ue windows+. button to bring emojis>
-            <button>🤯 <strong>2</strong></button> <!for bolding a word we use "b" but this not semantic, so in html5 we use "strong" means strong word>
-            <button>😒 <strong>1</strong></button>
-            </div><!generic box with no meaning>
-        </li>
-      </ul>
-  
-      <ul>
-          <li>
-              <p class="information">
-                  Recently graduated with honors in a thesis-based Master of Applied Science
-                  program from the University of Windsor in the department of Electrical &
-                  Computer Engineering. My primary research was focused on energy efficient
-                  Next Generation Wireless Communication. I developed a design on the
-                  baseband modulation technique, Index Modulation (IM) variants on OFDM. I
-                  am in AWS Restart program and developed my own Fullstack application on
-                  AWS platform with autoscaling performance. I used html,css,js for the
-                  frontend, mariadB and java for the backend and apache server all placed in
-                  an EC2 instance. I am preparing a project on CI/CD with docker and ECS. I
-                  am an IT enthusiast who is excited to join the IT industry to develop my
-                  current skills while serving the accumulated ones.
-                  <a href=https://github.com/agnila7/aws-resource-network-level-workshop" target="_blank"> (Github)</a>
-                  <span class="tag">#About#</span>
-                </p>
-                <div>
-                    <button>👍 <strong>11</strong></button> <!ue windows+. button to bring emojis>
-                    <button>🤯 <strong>2</strong></button> <!for bolding a word we use "b" but this not semantic, so in html5 we use "strong" means strong word>
-                    <button>😒 <strong>0</strong></button>
-                </div><!generic box with no meaning>
+        <section>
+          <ul>
+            <li class="information">
+              <!-- 3 flex items: para, tag and button  -->
+              <p>
+                A Cloud Digital Transformation Specialist, M.Sc. Graduate from
+                Electrical &amp; Computer Engineering Department of the
+                University of Windsor.
+                <a
+                  class="hyperlinks"
+                  href="https://www.linkedin.com/in/agnila-barua/"
+                  target="_blank"
+                >
+                  (LinkedIn)</a
+                >
+                <!-- tarhet bank has been added to pop up the hyperlink windsow instaed of opening in the same tab -->
+              </p>
+
+              <div class="right-sidebar">
+                <span class="tag" style="background-color: #3b82f6"
+                  >Introduction</span
+                >
+
+                <div class="vote-buttons">
+                  <button>👍 5</button>
+                  <!--ue windows+. button to bring emojis-->
+                  <button>🤯 2</button>
+                  <!--   <strong>0</strong>for bolding a word we use "b" but this not semantic, so in html5 we use "strong" means strong word -->
+                  <button>😒1</button>
+                </div>
+                <!--generic box with no meaning-->
+              </div>
             </li>
-        </ul>
+          </ul>
 
-</section>
- 
-</main>
+          <ul>
+            <li class="information">
+              <p>
+                Recently graduated with honors in a thesis-based Master of
+                Applied Science program from the University of Windsor in the
+                department of Electrical &amp; Computer Engineering. My primary
+                research was focused on energy efficient Next Generation
+                Wireless Communication. I developed a design on the baseband
+                modulation technique, Index Modulation (IM) variants on OFDM. I
+                am in AWS Restart program and developed my own Fullstack
+                application on AWS platform with autoscaling performance. I used
+                html,css,js for the frontend, mariadB and java for the backend
+                and apache server all placed in an EC2 instance. I am preparing
+                a project on CI/CD with docker and ECS. I am an IT enthusiast
+                who is excited to join the IT industry to develop my current
+                skills while serving the accumulated ones.
 
+                <!-- <a class="hyperlinks">Test</a>  example of anchor element with href only hets styled because of link -->
+                <a
+                  class="hyperlinks"
+                  href="https://github.com/agnila7/aws-resource-network-level-workshop%22"
+                  target="_blank"
+                >
+                  (Github)</a
+                >
+              </p>
 
+              <div class="right-sidebar">
+                <span class="tag" style="background-color: #be123c">About</span>
 
+                <div class="vote-buttons">
+                  <button>👍 11</button>
+                  <!--ue windows+. button to bring emojis-->
+                  <button>🤯 2</button>
+                  <!--for bolding a word we use "b" but this not semantic, so in html5 we use "strong" means strong word-->
+                  <button>😒 0</button>
+                </div>
+                <!--generic box with no meaning-->
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+    <script src="./Agnila Barua_files/script.js.download"></script>
+    <!-- linking our js file to the html -->
+
+    <div id="forest-ext-shadow-host">
+      <template shadowrootmode="open"
+        ><head></head>
+        <div id="root"></div
+      ></template>
+    </div>
   </body>
+  <grammarly-desktop-integration data-grammarly-shadow-root="true"
+    ><template shadowrootmode="open"
+      ><style>
+        div.grammarly-desktop-integration {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+          -moz-user-select: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        div.grammarly-desktop-integration:before {
+          content: attr(data-content);
+        }
+      </style>
+      <div
+        aria-label="grammarly-integration"
+        role="group"
+        tabindex="-1"
+        class="grammarly-desktop-integration"
+        data-content='{"mode":"full","isActive":true,"isUserDisabled":false}'
+      ></div></template
+  ></grammarly-desktop-integration>
 </html>
