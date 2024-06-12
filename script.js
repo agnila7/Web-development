@@ -2,7 +2,7 @@
 // transfomrs normal static webpage to fully-fledged web application
 
 
-//console.log("Hello world") // go to console in the webpage to see this printed output
+console.log("Hello world") // go to console in the webpage to see this printed output
 
 // user click event initiation: like css, select some elements first
 const btn = document.querySelector(".btn-open"); // it will return button open
@@ -33,7 +33,7 @@ btn.addEventListener("click", function() {
 
 let votesInteresting = 5;
 let votesMindblowing = 2;
-const text = "I am Agnila"; // assigning text constatnt variable to I am Augnila value
+const text = "I am Agnila"; // assigning text constatnt variable to I am Agnila value
 
 // operator
 votesInteresting = votesInteresting + 1;
