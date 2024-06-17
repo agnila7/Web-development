@@ -65,6 +65,8 @@ const initialFacts = [
 //     { name: "news", color: "#8b5cf6" },
   ];
 
+// console.log(CATEGORIES.find((cat) => cat.name ==="Introduction").color);
+
 console.log("Hello world") // go to console in the webpage to see this printed output
 
 //selecting DOM elements
@@ -85,12 +87,40 @@ factsList.insertAdjacentHTML("afterbegin", "<li>Saarah</li>");   //insertAdjacen
 factsList.insertAdjacentHTML("afterbegin", "<li>asif</li>"); 
 */
 
+/*
 // to pass initialfacts as argumeent in createFactList method, we can call it beforeand
 createFactList(initialFacts);
 //thius is done, so we can call database Api in the dataArray to avoi hardcoding
 // createFactList([{text: "Jonas"}]);  //calling an array from the object
+*/
 
 
+//load data from supabase
+
+loadFacts();    //call the function
+
+//fetch in js is used to create a request from Api 
+//to load data we use async funvtion
+
+async function loadFacts(){
+    const res= await fetch("https://zifbpsczjfpnhunqcrgj.supabase.co/rest/v1/information", {
+        headers:{
+            apikey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InppZmJwc2N6amZwbmh1bnFjcmdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTI5MDc1NjQsImV4cCI6MjAwODQ4MzU2NH0.qjXvLY0DU5mPn3G58PnMzArJCfPWMuC354J-IV4_Zdo",
+            authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InppZmJwc2N6amZwbmh1bnFjcmdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTI5MDc1NjQsImV4cCI6MjAwODQ4MzU2NH0.qjXvLY0DU5mPn3G58PnMzArJCfPWMuC354J-IV4_Zdo"
+
+        },
+    }); //fetch(url string, pass object)
+
+    console.log(res);   //see trhe response
+    //Dom objects needs to be converted to json format
+    const data= await res.json();
+    console.log(data);
+    
+    //add filter array to the fact
+    // const filteredData =data.filter((fact) => fact.category === "Introduction");
+
+    createFactList(data);
+}
 
 
 function createFactList(dataArray){
@@ -105,11 +135,11 @@ const htmlArr = dataArray.map((fact) =>
             target="_blank"> (${fact.sourceName})
         </a>
     </p>
-    <span class="tag" style="background-color: #3b82f6">
+    <span class="tag" style="background-color: ${CATEGORIES.find((cat) => cat.name === fact.category).color}">
     ${fact.category}
         </span>
 </li>`);
-console.log(htmlArr);
+// console.log(htmlArr);
 //join
 const html = htmlArr.join("");
 factsList.insertAdjacentHTML("afterbegin",html);
@@ -136,6 +166,13 @@ btn.addEventListener("click", function() {
     }
 })
 
+//filter and find method for finding the right color for the category
+// filter array also loop around the array but the difference is : it will return the value in aray only if it is true, so only apply condition in  ternary
+// returns an array
+console.log([7, 64, 6, -23, 11].filter((arg) => arg>10 ));
+
+// find method return the frst true element of that array. only return a value
+console.log([7, 64, 6, -23, 11].find((arg) => arg>10 ));
 
 
 /*
