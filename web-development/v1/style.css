@@ -1,0 +1,322 @@
+//* apart from flexbox, frid, tailwindcss, it also designed for small screens where media queries were included to overwrite some width property and fitting 2 couloumns down by down to fit in phone screen */
+/* for now i have not created the backend by myself. I have used supabase help for that. I am intend to use aws platform and php for my next project for the backend */
+/*good source in internet for css: MDN WEb Docs, CSS tricks */
+/* * is the global variable, any property inside that curly brace  will be developed in the whole webpage*/
+/* declaration, css rule,  */
+/*Visisble part of the element: css box model: how welements are displayed, each elements are rectangula box, content: image text etc, border: line around the element, they are still inside of the element
+padding: empty space around the content between the border, it is still inside the element, width, height: dimensions of element including padding and border.
+but margin: empty space outside of the element. space between elements. */
+/* delete the orginial webpage margin and paddings . it can be inspect from developer tool in the browser in user agent stylesheet. */
+/* block level element: occupies 100% width from the parent, inline element: only occupies the space it needs. css considers text as inline element*/
+/* Flexbox: to create simple layout in css. layout: placing elements that wherever we want in our page . it gives us tool to vertically and horizontally align item.*/
+/* CSS GRID: another layout. great for 2 D  layouts. */
+/* we are using grid instead of flexbox for the body layout coz to specify the exact width of one of the elements. its better to use grid */
+/* we want to keep the content of the box in the center. do not stretch with the browser */
+/* responsive web design:adopt layout to the smaller screen. media queries: identify points in the esign based on the browser width in which design looks bad . */
+
+/* 1. extra work done by me: section border radius customized by mdn web docks, 2. introduced div(right-sidebar) and nested flex in them to create different layout
+Also struggled to put space between tag and oting buttons as padding bottom of tag was not doing enough. so used grid and gap for the space */
+
+* {
+  margin: 0;
+  padding: 0;
+  /*remove every padding and margin. its easy to do with global selector. it does not have inherritance property , so if we malace it in parent element
+  it will not be inherited in child element. thats why we use global selector*/
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #94a3b8;
+  color: #1a2e05;
+  padding: 40px; /*padding on the whole page  */
+
+  /* instead of global variable , we use inheritance, in the specific parent element (body) we put our property like (text-transformation, color(most of them)), all the child elements (form, span, paragraph) will have also that property*/
+
+  /* not all property has the inheitance  nature. for example background color*/
+}
+
+/*for js, hidden is a special class and add and remove  that class through js*/
+.hidden {
+  display: none !important;
+  /* since it is in the form and it already has a property of dispay flex , so it as not hiding.
+  now we added important so, it will foce to be hidden */
+}
+
+/* main layout */
+
+/* the page stays rightly centered even if we strach out or down the browser. recalculate the space. so thats why the container class of the body has been used*/
+/* in devstool , if we coose box befole elements , it will show the dimension of any phone or screen. select Dimensions on ur top side of the webpage */
+.container {
+  max-width: 1500px;
+  /* if there is smaller space than 1000px than it will take the space whatever it is available */
+  /* we can see the dimensions if we place the cursor on container line in devstool */
+  /* background-color: orangered; used for visualization*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  margin-top: 40px; /*margin creates space between elements*/
+  margin-bottom: 40px;
+  /* padding: 10px;
+  background-color: red; used for flex box visualization*/
+
+  display: flex; /*  flex container: .header. all the direct childeren of .header are flex items: button and logo are side by side*/
+  align-items: center; /* this button is aligned vertically with logo with center. we can use flex-start flex end or stretch in align-item*/
+  justify-content: space-between; /* entire item aign horizontally */
+}
+
+/* creating the whole body into grid */
+.main {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+}
+
+/* when the screen downs to 900px for phones, 2 coulouns of aside and section becomes 1 down by down  */
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* elements */
+.logo {
+  /* background-color: blue; used fr flexbox visualization*/
+  display: flex;
+  align-items: center;
+  gap: 16px; /* instead of using margin-left in the h1, we can use gap */
+}
+
+.logo img {
+  margin: auto;
+  display: block;
+}
+
+/* FORM */
+.recommendation {
+  background-color: #64748b;
+  margin-bottom: 40px;
+  padding: 16px 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 16px;
+}
+
+.recommendation input,
+.recommendation select {
+  width: 220px; /* max-width for centering the flex items in center even after straching the screen down or maximum */
+  background-color: #cbd5e1;
+  border: none;
+  border-radius: 100px;
+  padding: 16px;
+  font-size: 18px;
+  font-family: inherit;
+}
+
+/* :: means a pseudo-element. this element does not exit in the html page */
+.recommendation input::placeholder {
+  color: #3f6212;
+}
+
+/* we want to cover all trhe recommendation space with the 1st flex item */
+.recommendation input:first-child {
+  flex-grow: 1;
+}
+
+.recommendation span {
+  font-weight: 600;
+  font-size: 18px; /* basically all web designers use some predeigned values, sale he font-size */
+  margin-right: 18px;
+}
+
+/* we usually put the media queries after original elements */
+@media (max-width: 1000px) {
+  body {
+    padding: 32px 48px;
+  }
+  /* we are designing the form to fit correctly when streching in or out the screen */
+  .recommendation {
+    flex-direction: column;
+    align-items: stretch; /* overwriting the recommendation align-item center */
+  }
+  .recommendation input,
+  .recommendation select {
+    width: auto; /* overwriting the width for form elements except the button*/
+  }
+}
+
+h1 {
+  font-size: 42px;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Coiny", Arial, sans-serif;
+  color: #820829; /* there are by default color. we dont use them. we use RGB model color (Red, green , blue). they are hexadecimel number. each two digit / char define how much red, green and blue is in that color. we usually use  tailwind.css customizing colors for selecting the pallette */
+  /* background-color:red is the example of block level element  */
+  /* text-align:center; bock element can be centered*/
+  /* line-height: 1;
+  margin-top: 6px;  this oe for social media logo*/
+}
+
+.category {
+  margin-bottom: 16px;
+}
+
+.information {
+  font-size: 20px;
+  line-height: 1.4;
+  font-family: "Josefin Sans", sans-serif;
+  /* we usually download the font from google. the site is called googlefonts */
+
+  background-color: #64748b;
+  margin-bottom: 16px; /* if you check in devstool and select the information class in elements , it will show the list in blue and margin in orange in your webpage
+  good practice to watch it in the devstool */
+  padding: 16px 40px; /* padding is used for inside space of the elements. ep when u havebackground color, padding property: vertical , horizontal can be added*/
+  /*border: 4px solid red; border property: width, style , color  */
+  letter-spacing: -1px;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  /* justify-content: space-between; it is not soothing instead we use add margin in .vote-buttons*/
+  border-radius: 16px;
+}
+
+/* media queries: identify points in the esign based on the browser width in which design looks bad .  */
+@media (max-width: 1200px) {
+  .information {
+    /* switched the main axis to secondary axis with flex-direction . Now it is a vertical alignment*/
+    flex-direction: column; /* instead of introducing nested flex that i did for tag and voting button,
+    i can simply change the flex-direction to coloumn to keep the 2nd and 3rd itme in the coloumn incase the screen gets really small */
+    gap: 12px; /* now as flext item becomes columner, gap is now horzontal. another alternative of my previous nedted work */
+    align-items: flex-end;
+  }
+}
+
+.right-sidebar {
+  display: grid;
+  gap: 10px;
+}
+
+.tag {
+  text-transform: uppercase;
+  font-size: 15px;
+  font-family: "Coiny", sans-serif;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border-radius: 10px 100px / 120px;
+  /* background-color: red;*/
+  /*display: block;  inline elements can be transformed into block level  */
+  text-align: center; /*does not work here as it is occupying all the space of that box. so nowhere to center the text but box element can be centered */
+}
+
+.vote-buttons {
+  margin-left: auto;
+
+  /* flexbox container: .vote-buttons, flxbox items: buttons */
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0; /* 0 means , we dont allow the flex items to shrink */
+}
+
+.vote-buttons button {
+  background-color: #334155;
+  border: none;
+  color: #ecfeff;
+  font-size: 16px;
+  padding: 6px 12px 2px 12px; /* padding: top+bottom, left and right*/
+  border-radius: 100px;
+  font-family: inherit; /* forced inheritance */
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.vote-buttons button:hover {
+  background-color: #94a3b8;
+}
+
+ul {
+  list-style: none;
+}
+
+/* sudo class of link means only the anchor elements with href will be styled */
+.hyperlinks:link {
+  color: #65a30d;
+  text-decoration: none; /* removes the underline from the link */
+  margin-left: 8px;
+  transition: 1s; /* smoothly tranistions the color while pointing the hyperlink */
+}
+
+/* animation */
+/* sudoclass , the order should be like this visited, hover and active/ hover :Applies while the user designates an element with a pointing devicet. gives an animation like feeling*/
+/* visited will change the color once you visit the link */
+.hyperlinks:visited {
+  color: aqua;
+}
+/* when touches the link or point to the link , change the property of color */
+/* whn clicked  , active changes the color */
+.hyperlinks:hover,
+.hyperlinks:active {
+  color: #a9cf2c4e;
+}
+
+/* button styling except voting button*/
+
+.btn {
+  border: none;
+  font-family: "Coiny", sans-serif;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 17px;
+  padding: 16px 0 13px; /* top, left&right, bottom */
+  background-image: linear-gradient(
+    135deg,
+    #16a34a,
+    #075985,
+    #be123c,
+    #fde047
+  ); /* angle value */
+  /* color: inherit; buttons and form elements do not inherit the color, so we forcily inherit so that it take the same color as body */
+  color: #ecfeff;
+  border-radius: 10px 100px / 120px; /* reference from MDN web docks */
+  transition: 0.3s;
+  cursor: pointer; /* putting mouse pointer */
+}
+
+.btn:hover {
+  transform: scale(110%) rotate(-2deg);
+}
+
+.btn-large {
+  font-size: 20px;
+  padding: 20px 32px 17px;
+}
+
+.btn-all-categories {
+  margin-bottom: 16px; /* inline elemenr */
+  width: 100%; /* occupy the width of the parent element */
+}
+
+.btn-categories {
+  width: 100%;
+  background-image: none;
+}
+
+/* used for grid example 
+.test {
+  background-color: black;
+  margin: 100px;
+
+  display: grid;
+  grid-template-columns: 50px 200px 1fr; fr means occupying the leftover space
+  grid-template-rows: 100px 300px; 
+  column-gap: 30px;
+  row-gap: 50px;
+}
+
+.child {
+  background-color: red;
+  font-size: 30px;
+} */

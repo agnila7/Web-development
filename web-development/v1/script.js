@@ -100,7 +100,9 @@ createFactList(initialFacts);
 loadFacts();    //call the function
 
 //fetch in js is used to create a request from Api 
-//to load data we use async funvtion
+//to load data we use async funvtion. async function will make wait the code to get result and then pass on the next code
+// await will pause the execituion of code while fetching the reult
+// await can be only used function that return promises
 
 async function loadFacts(){
     const res= await fetch("https://zifbpsczjfpnhunqcrgj.supabase.co/rest/v1/information", {
