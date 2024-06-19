@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./style.css";
 
 // susally while building react from scratch, we start from app.js and the go to index.html
@@ -61,6 +62,28 @@ const CATEGORIES = [
   { name: "Toronto Recreation Programs", color: "#eab308" },
 ];
 
+//  detour to create counter for learning state
+function Counter(){
+
+const [count, setCount] = useState(0);  // this is an array, so destructure; (2) [0, f]
+
+
+  // when click the btn, counter will increase
+  return (
+    <div>
+        <span style={{fontSize: '40px'}}>
+            {count}
+        </span>
+        {/* Regenerated JSX */}
+        <button className="btn btn-large" onClick={() => setCount((c)=> c+1)}>
+        {/* <button className="btn btn-large" onClick={() => console.log("CLICK")}> */}
+            {/* ususally in js for click event, we use:  btn.addEventListener('click', function()...)
+            for react, we only call onClick */}
+            Counter +1
+        </button>
+    </div>
+  )
+}
 
 
 function App(){ 
@@ -96,6 +119,8 @@ const appTitle = "AGNILA BARUA";
 
       <RecommForm/>
 
+      <Counter/>
+
       <main className="main">
         <CategoryFilter/>
         <FactsList/>
@@ -109,9 +134,27 @@ function RecommForm(){
   return <form className = "recommendation">Recommendation</form>;
 }
 
-function CategoryFilter(){
 
-  return <aside>Category filter</aside>;  // react doesnt know where to put this element
+function CategoryFilter(){
+  
+  return(<aside>
+    <ul>
+         <li className="category">
+              <button className="btn btn-all-categories">All</button>
+         </li>
+
+         {CATEGORIES.map((cat) =>(
+              <li key = {cat.name} className="category">
+              <button
+                className="btn btn-categories"
+                style={{backgroundColor: cat.color}}
+              >
+                {cat.name}
+              </button>
+            </li> 
+          ))}
+    </ul>
+  </aside>);  // react doesnt know where to put this element
 
 }
 
@@ -128,11 +171,13 @@ function FactsList(){
         {/* {facts.map((fact) =><li key= {fact.id}>fact</li>)} */}
       { facts.map((fact) => (
       <Fact  key={fact.id} fact = {fact}/> 
-      // <Fact factObj = {fact}/>  // here factObj is passing prop // thats how you pass propoerties from parent component to child component
+      // <Fact  key={fact.id} factObj = {fact} />  // here factObj is passing prop // thats how you pass propoerties from parent component to child component
     ))
       }
 
      </ul>
+
+     <p> There are {facts.length -2} discussions in the databse. </p>
   </section>
   );
   // create one DOM element for each fact; similar loop over as script.js. 
@@ -141,6 +186,7 @@ function FactsList(){
   // return <> <section className = "facts-list">Information</section>;
   // <RecommForm/>
   // </>
+
 }
 
 // in js we would write Fact(fact); passing argument

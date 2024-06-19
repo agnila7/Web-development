@@ -46,7 +46,8 @@ body {
 
 /* the page stays rightly centered even if we strach out or down the browser. recalculate the space. so thats why the container class of the body has been used*/
 /* in devstool , if we coose box befole elements , it will show the dimension of any phone or screen. select Dimensions on ur top side of the webpage */
-.container {
+#root { 
+  /* this is root id, so use # */
   max-width: 1500px;
   /* if there is smaller space than 1000px than it will take the space whatever it is available */
   /* we can see the dimensions if we place the cursor on container line in devstool */
